@@ -1,41 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A static beginner-friendly HTML reference guide with definitions and examples of standard HTML elements.">
-  <title>HTML Handbook | Web Engineering</title>
-  <style>
-    :root{--bg:#f5f7ff;--surface:#fff;--ink:#17213b;--muted:#68738e;--line:#e5e9f4;--primary:#5368e8;--purple:#8659dc;--soft:#eef0ff;--code:#111a31;--shadow:0 14px 40px rgba(37,52,105,.08)}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
-    a{color:inherit;text-decoration:none}.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-    .nav{max-width:1180px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.4px}.logo{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--primary),var(--purple));display:grid;place-items:center;color:#fff;font-weight:900}.nav small{color:var(--muted)}
-    .hero{max-width:1180px;margin:42px auto 28px;padding:0 22px}.hero-card{overflow:hidden;position:relative;padding:48px;border-radius:25px;color:white;background:linear-gradient(120deg,#455de0,#7354d7 70%,#9865d8);box-shadow:0 20px 50px rgba(83,104,232,.2);animation:rise .65s ease both}.hero-card:after{content:"< / >";position:absolute;right:6%;top:5%;font-size:clamp(70px,13vw,150px);font-weight:900;color:rgba(255,255,255,.09);transform:rotate(-9deg)}
-    .eyebrow{display:inline-block;padding:6px 11px;border:1px solid rgba(255,255,255,.3);border-radius:99px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}.hero h1{font-size:clamp(32px,5vw,54px);line-height:1.1;letter-spacing:-1.8px;max-width:650px;margin:18px 0 12px}.hero p{max-width:610px;color:rgba(255,255,255,.85);margin:0 0 24px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn{border:0;border-radius:11px;padding:11px 17px;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s}.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.12)}.btn-light{background:#fff;color:#394fc5}.btn-ghost{background:rgba(255,255,255,.13);color:#fff;border:1px solid rgba(255,255,255,.3)}
-    .layout{max-width:1180px;margin:0 auto;padding:0 22px 60px;display:grid;grid-template-columns:245px minmax(0,1fr);gap:24px;align-items:start}.sidebar,.content-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.sidebar{padding:18px;position:sticky;top:78px;max-height:calc(100vh - 96px);overflow:auto}.side-title{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:800;margin:4px 8px 12px}.category-link{display:block;padding:9px 11px;border-radius:9px;color:#58637d;font-size:14px;margin:2px 0;transition:.2s}.category-link:hover{background:var(--soft);color:#485bd1;font-weight:700}.main{min-width:0}.content-card{padding:24px;margin-bottom:18px;scroll-margin-top:90px;animation:rise .45s ease both}.section-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;margin-bottom:18px}.section-head h2{font-size:21px;letter-spacing:-.5px;margin:0}.section-head p{margin:4px 0 0;color:var(--muted);font-size:14px}.tag-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.tag-card{border:1px solid var(--line);border-radius:13px;padding:15px;transition:transform .2s,border-color .2s,box-shadow .2s;min-width:0}.tag-card:hover{transform:translateY(-3px);border-color:#c7cdfb;box-shadow:0 9px 22px rgba(55,71,150,.08)}.tag-name{display:inline-block;color:#5264db;background:#eff0ff;padding:3px 8px;border-radius:7px;font-family:ui-monospace,monospace;font-weight:800;font-size:13px}.tag-card p{font-size:13px;color:var(--muted);margin:9px 0 12px}.tag-card pre{margin:0;padding:11px;border-radius:9px;background:var(--code);color:#dce5ff;overflow:auto;font-size:12px;line-height:1.55}.tag-card code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.note{margin-top:14px;padding:12px 14px;background:#f4f5ff;border-left:3px solid var(--primary);border-radius:7px;color:#596382;font-size:13px}.footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
-    @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@media(max-width:800px){.layout{grid-template-columns:1fr}.sidebar{position:static;max-height:none;display:flex;gap:5px;overflow-x:auto;white-space:nowrap;padding:10px}.side-title{display:none}.category-link{display:inline-block}.hero-card{padding:32px 25px}.tag-grid{grid-template-columns:1fr}}@media(max-width:480px){.nav{padding:12px 16px}.nav small{display:none}.hero{margin-top:22px;padding:0 14px}.layout{padding:0 14px 40px}.hero-card{border-radius:18px}.content-card{padding:17px}.toolbar{flex-direction:column}.count{align-self:flex-start}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
-  </style>
-</head>
-<body>
-  <header class="topbar"><nav class="nav" aria-label="Main navigation"><a class="brand" href="#top"><span class="logo">H</span><span>HTML Handbook</span></a><small>Web Engineering · Study Reference</small></nav></header>
-  <header class="hero" id="top"><div class="hero-card"><span class="eyebrow">Beginner-friendly reference</span><h1>Learn HTML, one element at a time.</h1><p>Explore the building blocks of the web. Each HTML element includes a simple definition and a syntax example to help you understand when and how to use it.</p><div class="hero-actions"><a class="btn btn-light" href="#basics">Start learning ↓</a><a class="btn btn-ghost" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank" rel="noopener">Official element reference ↗</a></div></div></header>
-  <div class="layout">
-    <aside class="sidebar" aria-label="HTML categories"><div class="side-title">Categories</div><a class="category-link" href="#html-intro">HTML introduction</a><a class="category-link" href="#basics">Basic structure</a><a class="category-link" href="#metadata">Metadata</a><a class="category-link" href="#text">Text content</a><a class="category-link" href="#inline">Inline text</a><a class="category-link" href="#links">Links</a><a class="category-link" href="#lists">Lists</a><a class="category-link" href="#media">Images & media</a><a class="category-link" href="#tables">Tables</a><a class="category-link" href="#forms">Forms</a><a class="category-link" href="#semantic">Semantic layout</a><a class="category-link" href="#interactive">Interactive</a><a class="category-link" href="#other">Other elements</a></aside>
-    <main class="main">
-      <section class="content-card" id="html-intro">
-        <div class="section-head"><div><h2>What is HTML?</h2><p>The basic language used to structure content on web pages.</p></div></div>
-        <p>HTML stands for <strong>HyperText Markup Language</strong>. It tells a web browser how content is organized, such as headings, paragraphs, images, links, lists, and forms. HTML is a markup language, not a programming language.</p>
-        <h3>How an HTML element is written</h3>
-        <pre><code>&lt;p class="intro"&gt;Hello, world!&lt;/p&gt;</code></pre>
-        <ul>
-          <li><strong>&lt;p&gt;</strong> is the opening tag.</li>
-          <li><strong>class="intro"</strong> is an attribute that gives the element extra information.</li>
-          <li><strong>Hello, world!</strong> is the content.</li>
-          <li><strong>&lt;/p&gt;</strong> is the closing tag.</li>
-        </ul>
-        <h3>Basic HTML document</h3>
-        <pre><code>&lt;!DOCTYPE html&gt;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A static beginner-friendly HTML reference guide with definitions and examples of standard HTML elements."
+    />
+    <title>HTML Handbook | Web Engineering</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <div class="welcome-overlay" id="welcomeOverlay" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
+      <form class="welcome-modal" id="welcomeForm">
+        <span class="welcome-icon" aria-hidden="true">✦</span>
+        <p class="welcome-kicker">HTML HANDBOOK</p>
+        <h2 id="welcomeTitle">Welcome to your learning space</h2>
+        <p class="welcome-copy">Before you begin, what should we call you?</p>
+        <label for="visitorName">Your name</label>
+        <input id="visitorName" name="visitorName" type="text" placeholder="Enter your name" maxlength="40" autocomplete="given-name" required />
+        <button class="welcome-submit" type="submit">Enter website <span aria-hidden="true">→</span></button>
+        <p class="welcome-footnote">Your name is saved only in this browser.</p>
+      </form>
+    </div>
+    <header class="topbar">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="#top"
+          ><span class="logo">H</span><span>HTML Handbook</span></a
+        ><small>Web Engineering · Study Reference</small>
+      </nav>
+    </header>
+    <header class="hero" id="top">
+      <div class="hero-card">
+        <span class="eyebrow" id="personalGreeting">Beginner-friendly reference</span>
+        <h1>Learn HTML, one element at a time.</h1>
+        <p>
+          Explore the building blocks of the web. Each HTML element includes a
+          simple definition and a syntax example to help you understand when and
+          how to use it.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-light" href="#basics">Start learning ↓</a
+          ><a
+            class="btn btn-ghost"
+            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element"
+            target="_blank"
+            rel="noopener"
+            >Official element reference ↗</a
+          >
+        </div>
+      </div>
+    </header>
+    <div class="layout">
+      <aside class="sidebar" aria-label="HTML categories">
+        <div class="side-title">Categories</div>
+        <a class="category-link" href="#html-intro">HTML introduction</a
+        ><a class="category-link" href="#basics">Basic structure</a
+        ><a class="category-link" href="#metadata">Metadata</a
+        ><a class="category-link" href="#text">Text content</a
+        ><a class="category-link" href="#inline">Inline text</a
+        ><a class="category-link" href="#links">Links</a
+        ><a class="category-link" href="#lists">Lists</a
+        ><a class="category-link" href="#media">Images & media</a
+        ><a class="category-link" href="#tables">Tables</a
+        ><a class="category-link" href="#forms">Forms</a
+        ><a class="category-link" href="#semantic">Semantic layout</a
+        ><a class="category-link" href="#interactive">Interactive</a
+        ><a class="category-link" href="#other">Other elements</a>
+      </aside>
+      <main class="main">
+        <section class="content-card" id="html-intro">
+          <div class="section-head">
+            <div>
+              <h2>What is HTML?</h2>
+              <p>The basic language used to structure content on web pages.</p>
+            </div>
+          </div>
+          <p>
+            HTML stands for <strong>HyperText Markup Language</strong>. It tells
+            a web browser how content is organized, such as headings,
+            paragraphs, images, links, lists, and forms. HTML is a markup
+            language, not a programming language.
+          </p>
+          <h3>How an HTML element is written</h3>
+          <pre><code>&lt;p class="intro"&gt;Hello, world!&lt;/p&gt;</code></pre>
+          <ul>
+            <li><strong>&lt;p&gt;</strong> is the opening tag.</li>
+            <li>
+              <strong>class="intro"</strong> is an attribute that gives the
+              element extra information.
+            </li>
+            <li><strong>Hello, world!</strong> is the content.</li>
+            <li><strong>&lt;/p&gt;</strong> is the closing tag.</li>
+          </ul>
+          <h3>Basic HTML document</h3>
+          <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
   &lt;meta charset="UTF-8"&gt;
@@ -47,182 +107,971 @@
   &lt;p&gt;This is my first webpage.&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-        <div class="note"><strong>Remember:</strong> Some elements are void elements. They do not wrap content and do not need closing tags, such as <code>&lt;img&gt;</code>, <code>&lt;br&gt;</code>, <code>&lt;hr&gt;</code>, <code>&lt;input&gt;</code>, and <code>&lt;meta&gt;</code>.</div>
-      </section>
-      <div id="sections">
-        <section class="content-card" id="basics"><div class="section-head"><div><h2>01. Basic document structure</h2><p>The essential elements that make an HTML page.</p></div></div><div class="tag-grid">
-          <article class="tag-card" data-search="doctype document type"><span class="tag-name">&lt;!DOCTYPE html&gt;</span><p>Declares that the document uses modern HTML (HTML5). It is not an HTML element.</p><pre><code>&lt;!DOCTYPE html&gt;</code></pre></article>
-          <article class="tag-card" data-search="html root element"><span class="tag-name">&lt;html&gt;</span><p>The root element that contains the entire HTML document.</p><pre><code>&lt;html lang="en"&gt;...&lt;/html&gt;</code></pre></article>
-          <article class="tag-card" data-search="head document metadata"><span class="tag-name">&lt;head&gt;</span><p>Contains page information and resource links that are not displayed as the main page content.</p><pre><code>&lt;head&gt;...&lt;/head&gt;</code></pre></article>
-          <article class="tag-card" data-search="title browser tab"><span class="tag-name">&lt;title&gt;</span><p>Sets the page title shown in the browser tab and often used by search engines.</p><pre><code>&lt;title&gt;My Website&lt;/title&gt;</code></pre></article>
-          <article class="tag-card" data-search="body visible content"><span class="tag-name">&lt;body&gt;</span><p>Contains the visible page content, such as headings, paragraphs, images, and links.</p><pre><code>&lt;body&gt;...&lt;/body&gt;</code></pre></article>
-        </div><div class="note">A typical page starts with <code>&lt;!DOCTYPE html&gt;</code>, followed by <code>&lt;html&gt;</code>, then <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code>.</div></section>
-        <section class="content-card" id="metadata"><div class="section-head"><div><h2>02. Metadata & resources</h2><p>Information about the document and external resources.</p></div></div><div class="tag-grid">
-          <article class="tag-card" data-search="meta charset viewport description"><span class="tag-name">&lt;meta&gt;</span><p>Provides metadata such as character encoding, page description, and responsive viewport settings.</p><pre><code>&lt;meta charset="UTF-8"&gt;
-&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre></article>
-          <article class="tag-card" data-search="link css favicon"><span class="tag-name">&lt;link&gt;</span><p>Connects an external resource, commonly a CSS stylesheet or favicon.</p><pre><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre></article>
-          <article class="tag-card" data-search="style css internal"><span class="tag-name">&lt;style&gt;</span><p>Contains CSS rules written inside the HTML document.</p><pre><code>&lt;style&gt;
+          <div class="note">
+            <strong>Remember:</strong> Some elements are void elements. They do
+            not wrap content and do not need closing tags, such as
+            <code>&lt;img&gt;</code>, <code>&lt;br&gt;</code>,
+            <code>&lt;hr&gt;</code>, <code>&lt;input&gt;</code>, and
+            <code>&lt;meta&gt;</code>.
+          </div>
+        </section>
+        <div id="sections">
+          <section class="content-card" id="basics">
+            <div class="section-head">
+              <div>
+                <h2>01. Basic document structure</h2>
+                <p>The essential elements that make an HTML page.</p>
+              </div>
+            </div>
+            <div class="tag-grid">
+              <article class="tag-card" data-search="doctype document type">
+                <span class="tag-name">&lt;!DOCTYPE html&gt;</span>
+                <p>
+                  Declares that the document uses modern HTML (HTML5). It is not
+                  an HTML element.
+                </p>
+                <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="html root element">
+                <span class="tag-name">&lt;html&gt;</span>
+                <p>The root element that contains the entire HTML document.</p>
+                <pre><code>&lt;html lang="en"&gt;...&lt;/html&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="head document metadata">
+                <span class="tag-name">&lt;head&gt;</span>
+                <p>
+                  Contains page information and resource links that are not
+                  displayed as the main page content.
+                </p>
+                <pre><code>&lt;head&gt;...&lt;/head&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="title browser tab">
+                <span class="tag-name">&lt;title&gt;</span>
+                <p>
+                  Sets the page title shown in the browser tab and often used by
+                  search engines.
+                </p>
+                <pre><code>&lt;title&gt;My Website&lt;/title&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="body visible content">
+                <span class="tag-name">&lt;body&gt;</span>
+                <p>
+                  Contains the visible page content, such as headings,
+                  paragraphs, images, and links.
+                </p>
+                <pre><code>&lt;body&gt;...&lt;/body&gt;</code></pre>
+              </article>
+            </div>
+            <div class="note">
+              A typical page starts with <code>&lt;!DOCTYPE html&gt;</code>,
+              followed by <code>&lt;html&gt;</code>, then
+              <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code>.
+            </div>
+          </section>
+          <section class="content-card" id="metadata">
+            <div class="section-head">
+              <div>
+                <h2>02. Metadata & resources</h2>
+                <p>Information about the document and external resources.</p>
+              </div>
+            </div>
+            <div class="tag-grid">
+              <article
+                class="tag-card"
+                data-search="meta charset viewport description"
+              >
+                <span class="tag-name">&lt;meta&gt;</span>
+                <p>
+                  Provides metadata such as character encoding, page
+                  description, and responsive viewport settings.
+                </p>
+                <pre><code>&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="link css favicon">
+                <span class="tag-name">&lt;link&gt;</span>
+                <p>
+                  Connects an external resource, commonly a CSS stylesheet or
+                  favicon.
+                </p>
+                <pre><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="style css internal">
+                <span class="tag-name">&lt;style&gt;</span>
+                <p>Contains CSS rules written inside the HTML document.</p>
+                <pre><code>&lt;style&gt;
   p { color: navy; }
-&lt;/style&gt;</code></pre></article>
-          <article class="tag-card" data-search="script javascript"><span class="tag-name">&lt;script&gt;</span><p>Embeds or links JavaScript code.</p><pre><code>&lt;script src="app.js" defer&gt;&lt;/script&gt;</code></pre></article>
-          <article class="tag-card" data-search="base relative urls"><span class="tag-name">&lt;base&gt;</span><p>Sets the base URL used for relative URLs in the document. Place it in the head.</p><pre><code>&lt;base href="https://example.com/"&gt;</code></pre></article>
-          <article class="tag-card" data-search="noscript javascript disabled"><span class="tag-name">&lt;noscript&gt;</span><p>Displays fallback content when scripting is disabled or unsupported.</p><pre><code>&lt;noscript&gt;Enable JavaScript for full features.&lt;/noscript&gt;</code></pre></article>
-        </div></section>
-        <section class="content-card" id="text"><div class="section-head"><div><h2>03. Headings & text blocks</h2><p>Elements used to organize written content.</p></div></div><div class="tag-grid">
-          <article class="tag-card" data-search="h1 heading largest"><span class="tag-name">&lt;h1&gt;</span><p>The main heading of a page or section. Use heading levels according to document structure.</p><pre><code>&lt;h1&gt;Main heading&lt;/h1&gt;</code></pre></article>
-          <article class="tag-card" data-search="h2 heading"><span class="tag-name">&lt;h2&gt;</span><p>A second-level heading, usually a subsection under an h1.</p><pre><code>&lt;h2&gt;Section heading&lt;/h2&gt;</code></pre></article>
-          <article class="tag-card" data-search="h3 h4 h5 h6 headings"><span class="tag-name">&lt;h3&gt; – &lt;h6&gt;</span><p>Third- through sixth-level headings for nested sections.</p><pre><code>&lt;h3&gt;Subsection&lt;/h3&gt;
-&lt;h4&gt;Smaller section&lt;/h4&gt;</code></pre></article>
-          <article class="tag-card" data-search="p paragraph"><span class="tag-name">&lt;p&gt;</span><p>Defines a paragraph of text.</p><pre><code>&lt;p&gt;This is a paragraph.&lt;/p&gt;</code></pre></article>
-          <article class="tag-card" data-search="br line break"><span class="tag-name">&lt;br&gt;</span><p>Creates a line break. It is a void element and has no closing tag.</p><pre><code>First line&lt;br&gt;Second line</code></pre></article>
-          <article class="tag-card" data-search="hr thematic break horizontal line"><span class="tag-name">&lt;hr&gt;</span><p>Represents a thematic break between sections, often displayed as a horizontal line.</p><pre><code>&lt;p&gt;Topic one&lt;/p&gt;
+&lt;/style&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="script javascript">
+                <span class="tag-name">&lt;script&gt;</span>
+                <p>Embeds or links JavaScript code.</p>
+                <pre><code>&lt;script src="app.js" defer&gt;&lt;/script&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="base relative urls">
+                <span class="tag-name">&lt;base&gt;</span>
+                <p>
+                  Sets the base URL used for relative URLs in the document.
+                  Place it in the head.
+                </p>
+                <pre><code>&lt;base href="https://example.com/"&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="noscript javascript disabled"
+              >
+                <span class="tag-name">&lt;noscript&gt;</span>
+                <p>
+                  Displays fallback content when scripting is disabled or
+                  unsupported.
+                </p>
+                <pre><code>&lt;noscript&gt;Enable JavaScript for full features.&lt;/noscript&gt;</code></pre>
+              </article>
+            </div>
+          </section>
+          <section class="content-card" id="text">
+            <div class="section-head">
+              <div>
+                <h2>03. Headings & text blocks</h2>
+                <p>Elements used to organize written content.</p>
+              </div>
+            </div>
+            <div class="tag-grid">
+              <article class="tag-card" data-search="h1 heading largest">
+                <span class="tag-name">&lt;h1&gt;</span>
+                <p>
+                  The main heading of a page or section. Use heading levels
+                  according to document structure.
+                </p>
+                <pre><code>&lt;h1&gt;Main heading&lt;/h1&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="h2 heading">
+                <span class="tag-name">&lt;h2&gt;</span>
+                <p>A second-level heading, usually a subsection under an h1.</p>
+                <pre><code>&lt;h2&gt;Section heading&lt;/h2&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="h3 h4 h5 h6 headings">
+                <span class="tag-name">&lt;h3&gt; – &lt;h6&gt;</span>
+                <p>Third- through sixth-level headings for nested sections.</p>
+                <pre><code>&lt;h3&gt;Subsection&lt;/h3&gt;
+&lt;h4&gt;Smaller section&lt;/h4&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="p paragraph">
+                <span class="tag-name">&lt;p&gt;</span>
+                <p>Defines a paragraph of text.</p>
+                <pre><code>&lt;p&gt;This is a paragraph.&lt;/p&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="br line break">
+                <span class="tag-name">&lt;br&gt;</span>
+                <p>
+                  Creates a line break. It is a void element and has no closing
+                  tag.
+                </p>
+                <pre><code>First line&lt;br&gt;Second line</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="hr thematic break horizontal line"
+              >
+                <span class="tag-name">&lt;hr&gt;</span>
+                <p>
+                  Represents a thematic break between sections, often displayed
+                  as a horizontal line.
+                </p>
+                <pre><code>&lt;p&gt;Topic one&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;Topic two&lt;/p&gt;</code></pre></article>
-          <article class="tag-card" data-search="pre preformatted whitespace"><span class="tag-name">&lt;pre&gt;</span><p>Displays preformatted text while preserving spaces and line breaks.</p><pre><code>&lt;pre&gt;
+&lt;p&gt;Topic two&lt;/p&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="pre preformatted whitespace"
+              >
+                <span class="tag-name">&lt;pre&gt;</span>
+                <p>
+                  Displays preformatted text while preserving spaces and line
+                  breaks.
+                </p>
+                <pre><code>&lt;pre&gt;
   Keep this spacing
-&lt;/pre&gt;</code></pre></article>
-          <article class="tag-card" data-search="blockquote quotation"><span class="tag-name">&lt;blockquote&gt;</span><p>Represents an extended quotation from another source.</p><pre><code>&lt;blockquote cite="https://example.com"&gt;
+&lt;/pre&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="blockquote quotation">
+                <span class="tag-name">&lt;blockquote&gt;</span>
+                <p>Represents an extended quotation from another source.</p>
+                <pre><code>&lt;blockquote cite="https://example.com"&gt;
   A quoted passage.
-&lt;/blockquote&gt;</code></pre></article>
-        </div></section>
-        <section class="content-card" id="inline"><div class="section-head"><div><h2>04. Inline text & meaning</h2><p>Elements that add meaning or formatting within text.</p></div></div><div class="tag-grid">
-          <article class="tag-card" data-search="strong important bold"><span class="tag-name">&lt;strong&gt;</span><p>Marks text as strongly important; browsers usually display it in bold.</p><pre><code>&lt;strong&gt;Important notice&lt;/strong&gt;</code></pre></article>
-          <article class="tag-card" data-search="em emphasis italic"><span class="tag-name">&lt;em&gt;</span><p>Emphasizes text; browsers usually display it in italics.</p><pre><code>&lt;em&gt;Pay attention&lt;/em&gt;</code></pre></article>
-          <article class="tag-card" data-search="b bold stylistic"><span class="tag-name">&lt;b&gt;</span><p>Draws attention to text without implying extra importance.</p><pre><code>&lt;b&gt;Keyword&lt;/b&gt;</code></pre></article>
-          <article class="tag-card" data-search="i italic alternate voice"><span class="tag-name">&lt;i&gt;</span><p>Marks text in an alternate voice or mood, commonly displayed in italics.</p><pre><code>&lt;i&gt;Scientific term&lt;/i&gt;</code></pre></article>
-          <article class="tag-card" data-search="u underline annotation"><span class="tag-name">&lt;u&gt;</span><p>Marks text with a non-textual annotation, commonly displayed with an underline.</p><pre><code>&lt;u&gt;Annotated text&lt;/u&gt;</code></pre></article>
-          <article class="tag-card" data-search="s strikethrough no longer accurate"><span class="tag-name">&lt;s&gt;</span><p>Represents content that is no longer accurate or relevant.</p><pre><code>&lt;s&gt;Old price: Rs. 500&lt;/s&gt;</code></pre></article>
-          <article class="tag-card" data-search="del deleted insertion ins"><span class="tag-name">&lt;del&gt; / &lt;ins&gt;</span><p>Mark deleted and inserted text, respectively.</p><pre><code>&lt;del&gt;Old text&lt;/del&gt;
-&lt;ins&gt;New text&lt;/ins&gt;</code></pre></article>
-          <article class="tag-card" data-search="mark highlight"><span class="tag-name">&lt;mark&gt;</span><p>Highlights text relevant to the current context.</p><pre><code>&lt;mark&gt;Search result&lt;/mark&gt;</code></pre></article>
-          <article class="tag-card" data-search="small fine print"><span class="tag-name">&lt;small&gt;</span><p>Represents side comments or fine print, such as copyright text.</p><pre><code>&lt;small&gt;Terms apply.&lt;/small&gt;</code></pre></article>
-          <article class="tag-card" data-search="sub subscript"><span class="tag-name">&lt;sub&gt;</span><p>Displays subscript text, commonly used in chemical formulas.</p><pre><code>H&lt;sub&gt;2&lt;/sub&gt;O</code></pre></article>
-          <article class="tag-card" data-search="sup superscript"><span class="tag-name">&lt;sup&gt;</span><p>Displays superscript text, commonly used for powers or footnotes.</p><pre><code>x&lt;sup&gt;2&lt;/sup&gt;</code></pre></article>
-          <article class="tag-card" data-search="code programming inline code"><span class="tag-name">&lt;code&gt;</span><p>Represents a fragment of computer code.</p><pre><code>&lt;code&gt;console.log("Hi")&lt;/code&gt;</code></pre></article>
-          <article class="tag-card" data-search="kbd keyboard input"><span class="tag-name">&lt;kbd&gt;</span><p>Represents user input, usually from a keyboard.</p><pre><code>Press &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;S&lt;/kbd&gt;</code></pre></article>
-          <article class="tag-card" data-search="samp sample output"><span class="tag-name">&lt;samp&gt;</span><p>Represents sample output from a computer program.</p><pre><code>&lt;samp&gt;File saved.&lt;/samp&gt;</code></pre></article>
-          <article class="tag-card" data-search="var variable"><span class="tag-name">&lt;var&gt;</span><p>Represents a variable in a mathematical expression or programming context.</p><pre><code>&lt;var&gt;x&lt;/var&gt; = 10</code></pre></article>
-          <article class="tag-card" data-search="abbr abbreviation title"><span class="tag-name">&lt;abbr&gt;</span><p>Represents an abbreviation; its title attribute can provide the full form.</p><pre><code>&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;</code></pre></article>
-          <article class="tag-card" data-search="cite citation title"><span class="tag-name">&lt;cite&gt;</span><p>Identifies the title of a creative work.</p><pre><code>&lt;cite&gt;A Brief History of Time&lt;/cite&gt;</code></pre></article>
-          <article class="tag-card" data-search="q short quotation"><span class="tag-name">&lt;q&gt;</span><p>Represents a short inline quotation.</p><pre><code>&lt;q&gt;Learning never stops.&lt;/q&gt;</code></pre></article>
-          <article class="tag-card" data-search="dfn definition term"><span class="tag-name">&lt;dfn&gt;</span><p>Marks the defining instance of a term.</p><pre><code>&lt;dfn&gt;HTML&lt;/dfn&gt; structures web content.</code></pre></article>
-          <article class="tag-card" data-search="time date datetime"><span class="tag-name">&lt;time&gt;</span><p>Represents a time or date in a machine-readable format.</p><pre><code>&lt;time datetime="2026-11-15"&gt;15 Nov 2026&lt;/time&gt;</code></pre></article>
-          <article class="tag-card" data-search="data machine readable"><span class="tag-name">&lt;data&gt;</span><p>Links visible content to a machine-readable value.</p><pre><code>&lt;data value="SKU-101"&gt;Blue shirt&lt;/data&gt;</code></pre></article>
-          <article class="tag-card" data-search="span generic inline container"><span class="tag-name">&lt;span&gt;</span><p>A generic inline container used for styling or scripting.</p><pre><code>&lt;span class="highlight"&gt;Text&lt;/span&gt;</code></pre></article>
-          <article class="tag-card" data-search="bdi bidirectional isolate"><span class="tag-name">&lt;bdi&gt;</span><p>Isolates text whose direction may differ from surrounding text.</p><pre><code>&lt;bdi&gt;اسم المستخدم&lt;/bdi&gt;</code></pre></article>
-          <article class="tag-card" data-search="bdo bidirectional override direction"><span class="tag-name">&lt;bdo&gt;</span><p>Overrides the text direction.</p><pre><code>&lt;bdo dir="rtl"&gt;Hello&lt;/bdo&gt;</code></pre></article>
-          <article class="tag-card" data-search="wbr word break opportunity"><span class="tag-name">&lt;wbr&gt;</span><p>Suggests a possible line-break location in a long word or URL.</p><pre><code>verylongword&lt;wbr&gt;continues</code></pre></article>
-          <article class="tag-card" data-search="ruby rt rp pronunciation"><span class="tag-name">&lt;ruby&gt; / &lt;rt&gt; / &lt;rp&gt;</span><p>Provide ruby annotations, often pronunciation guides for East Asian text.</p><pre><code>&lt;ruby&gt;漢 &lt;rt&gt;kan&lt;/rt&gt;&lt;/ruby&gt;</code></pre></article>
-        </div></section>
-        <section class="content-card" id="links"><div class="section-head"><div><h2>05. Links</h2><p>Connect pages and provide navigation.</p></div></div><div class="tag-grid">
-          <article class="tag-card" data-search="a anchor hyperlink href"><span class="tag-name">&lt;a&gt;</span><p>Creates a hyperlink to another page, file, email address, or location.</p><pre><code>&lt;a href="https://example.com"&gt;Visit site&lt;/a&gt;</code></pre></article>
-          <article class="tag-card" data-search="nav navigation links"><span class="tag-name">&lt;nav&gt;</span><p>Groups major navigation links for a website or page.</p><pre><code>&lt;nav&gt;
+&lt;/blockquote&gt;</code></pre>
+              </article>
+            </div>
+          </section>
+          <section class="content-card" id="inline">
+            <div class="section-head">
+              <div>
+                <h2>04. Inline text & meaning</h2>
+                <p>Elements that add meaning or formatting within text.</p>
+              </div>
+            </div>
+            <div class="tag-grid">
+              <article class="tag-card" data-search="strong important bold">
+                <span class="tag-name">&lt;strong&gt;</span>
+                <p>
+                  Marks text as strongly important; browsers usually display it
+                  in bold.
+                </p>
+                <pre><code>&lt;strong&gt;Important notice&lt;/strong&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="em emphasis italic">
+                <span class="tag-name">&lt;em&gt;</span>
+                <p>Emphasizes text; browsers usually display it in italics.</p>
+                <pre><code>&lt;em&gt;Pay attention&lt;/em&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="b bold stylistic">
+                <span class="tag-name">&lt;b&gt;</span>
+                <p>
+                  Draws attention to text without implying extra importance.
+                </p>
+                <pre><code>&lt;b&gt;Keyword&lt;/b&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="i italic alternate voice">
+                <span class="tag-name">&lt;i&gt;</span>
+                <p>
+                  Marks text in an alternate voice or mood, commonly displayed
+                  in italics.
+                </p>
+                <pre><code>&lt;i&gt;Scientific term&lt;/i&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="u underline annotation">
+                <span class="tag-name">&lt;u&gt;</span>
+                <p>
+                  Marks text with a non-textual annotation, commonly displayed
+                  with an underline.
+                </p>
+                <pre><code>&lt;u&gt;Annotated text&lt;/u&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="s strikethrough no longer accurate"
+              >
+                <span class="tag-name">&lt;s&gt;</span>
+                <p>
+                  Represents content that is no longer accurate or relevant.
+                </p>
+                <pre><code>&lt;s&gt;Old price: Rs. 500&lt;/s&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="del deleted insertion ins">
+                <span class="tag-name">&lt;del&gt; / &lt;ins&gt;</span>
+                <p>Mark deleted and inserted text, respectively.</p>
+                <pre><code>&lt;del&gt;Old text&lt;/del&gt;
+&lt;ins&gt;New text&lt;/ins&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="mark highlight">
+                <span class="tag-name">&lt;mark&gt;</span>
+                <p>Highlights text relevant to the current context.</p>
+                <pre><code>&lt;mark&gt;Search result&lt;/mark&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="small fine print">
+                <span class="tag-name">&lt;small&gt;</span>
+                <p>
+                  Represents side comments or fine print, such as copyright
+                  text.
+                </p>
+                <pre><code>&lt;small&gt;Terms apply.&lt;/small&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="sub subscript">
+                <span class="tag-name">&lt;sub&gt;</span>
+                <p>
+                  Displays subscript text, commonly used in chemical formulas.
+                </p>
+                <pre><code>H&lt;sub&gt;2&lt;/sub&gt;O</code></pre>
+              </article>
+              <article class="tag-card" data-search="sup superscript">
+                <span class="tag-name">&lt;sup&gt;</span>
+                <p>
+                  Displays superscript text, commonly used for powers or
+                  footnotes.
+                </p>
+                <pre><code>x&lt;sup&gt;2&lt;/sup&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="code programming inline code"
+              >
+                <span class="tag-name">&lt;code&gt;</span>
+                <p>Represents a fragment of computer code.</p>
+                <pre><code>&lt;code&gt;console.log("Hi")&lt;/code&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="kbd keyboard input">
+                <span class="tag-name">&lt;kbd&gt;</span>
+                <p>Represents user input, usually from a keyboard.</p>
+                <pre><code>Press &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;S&lt;/kbd&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="samp sample output">
+                <span class="tag-name">&lt;samp&gt;</span>
+                <p>Represents sample output from a computer program.</p>
+                <pre><code>&lt;samp&gt;File saved.&lt;/samp&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="var variable">
+                <span class="tag-name">&lt;var&gt;</span>
+                <p>
+                  Represents a variable in a mathematical expression or
+                  programming context.
+                </p>
+                <pre><code>&lt;var&gt;x&lt;/var&gt; = 10</code></pre>
+              </article>
+              <article class="tag-card" data-search="abbr abbreviation title">
+                <span class="tag-name">&lt;abbr&gt;</span>
+                <p>
+                  Represents an abbreviation; its title attribute can provide
+                  the full form.
+                </p>
+                <pre><code>&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="cite citation title">
+                <span class="tag-name">&lt;cite&gt;</span>
+                <p>Identifies the title of a creative work.</p>
+                <pre><code>&lt;cite&gt;A Brief History of Time&lt;/cite&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="q short quotation">
+                <span class="tag-name">&lt;q&gt;</span>
+                <p>Represents a short inline quotation.</p>
+                <pre><code>&lt;q&gt;Learning never stops.&lt;/q&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="dfn definition term">
+                <span class="tag-name">&lt;dfn&gt;</span>
+                <p>Marks the defining instance of a term.</p>
+                <pre><code>&lt;dfn&gt;HTML&lt;/dfn&gt; structures web content.</code></pre>
+              </article>
+              <article class="tag-card" data-search="time date datetime">
+                <span class="tag-name">&lt;time&gt;</span>
+                <p>Represents a time or date in a machine-readable format.</p>
+                <pre><code>&lt;time datetime="2026-11-15"&gt;15 Nov 2026&lt;/time&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="data machine readable">
+                <span class="tag-name">&lt;data&gt;</span>
+                <p>Links visible content to a machine-readable value.</p>
+                <pre><code>&lt;data value="SKU-101"&gt;Blue shirt&lt;/data&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="span generic inline container"
+              >
+                <span class="tag-name">&lt;span&gt;</span>
+                <p>A generic inline container used for styling or scripting.</p>
+                <pre><code>&lt;span class="highlight"&gt;Text&lt;/span&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="bdi bidirectional isolate">
+                <span class="tag-name">&lt;bdi&gt;</span>
+                <p>
+                  Isolates text whose direction may differ from surrounding
+                  text.
+                </p>
+                <pre><code>&lt;bdi&gt;اسم المستخدم&lt;/bdi&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="bdo bidirectional override direction"
+              >
+                <span class="tag-name">&lt;bdo&gt;</span>
+                <p>Overrides the text direction.</p>
+                <pre><code>&lt;bdo dir="rtl"&gt;Hello&lt;/bdo&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="wbr word break opportunity"
+              >
+                <span class="tag-name">&lt;wbr&gt;</span>
+                <p>
+                  Suggests a possible line-break location in a long word or URL.
+                </p>
+                <pre><code>verylongword&lt;wbr&gt;continues</code></pre>
+              </article>
+              <article class="tag-card" data-search="ruby rt rp pronunciation">
+                <span class="tag-name"
+                  >&lt;ruby&gt; / &lt;rt&gt; / &lt;rp&gt;</span
+                >
+                <p>
+                  Provide ruby annotations, often pronunciation guides for East
+                  Asian text.
+                </p>
+                <pre><code>&lt;ruby&gt;漢 &lt;rt&gt;kan&lt;/rt&gt;&lt;/ruby&gt;</code></pre>
+              </article>
+            </div>
+          </section>
+          <section class="content-card" id="links">
+            <div class="section-head">
+              <div>
+                <h2>05. Links</h2>
+                <p>Connect pages and provide navigation.</p>
+              </div>
+            </div>
+            <div class="tag-grid">
+              <article class="tag-card" data-search="a anchor hyperlink href">
+                <span class="tag-name">&lt;a&gt;</span>
+                <p>
+                  Creates a hyperlink to another page, file, email address, or
+                  location.
+                </p>
+                <pre><code>&lt;a href="https://example.com"&gt;Visit site&lt;/a&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="nav navigation links">
+                <span class="tag-name">&lt;nav&gt;</span>
+                <p>Groups major navigation links for a website or page.</p>
+                <pre><code>&lt;nav&gt;
   &lt;a href="/home"&gt;Home&lt;/a&gt;
-&lt;/nav&gt;</code></pre></article>
-        </div></section>
-        <section class="content-card" id="lists"><div class="section-head"><div><h2>06. Lists</h2><p>Organize related items in different list formats.</p></div></div><div class="tag-grid">
-          <article class="tag-card" data-search="ul unordered bullet list"><span class="tag-name">&lt;ul&gt;</span><p>Creates an unordered, usually bulleted, list.</p><pre><code>&lt;ul&gt;
+&lt;/nav&gt;</code></pre>
+              </article>
+            </div>
+          </section>
+          <section class="content-card" id="lists">
+            <div class="section-head">
+              <div>
+                <h2>06. Lists</h2>
+                <p>Organize related items in different list formats.</p>
+              </div>
+            </div>
+            <div class="tag-grid">
+              <article class="tag-card" data-search="ul unordered bullet list">
+                <span class="tag-name">&lt;ul&gt;</span>
+                <p>Creates an unordered, usually bulleted, list.</p>
+                <pre><code>&lt;ul&gt;
   &lt;li&gt;HTML&lt;/li&gt;
   &lt;li&gt;CSS&lt;/li&gt;
-&lt;/ul&gt;</code></pre></article>
-          <article class="tag-card" data-search="ol ordered numbered list"><span class="tag-name">&lt;ol&gt;</span><p>Creates an ordered list, usually numbered.</p><pre><code>&lt;ol&gt;
+&lt;/ul&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="ol ordered numbered list">
+                <span class="tag-name">&lt;ol&gt;</span>
+                <p>Creates an ordered list, usually numbered.</p>
+                <pre><code>&lt;ol&gt;
   &lt;li&gt;Plan&lt;/li&gt;
   &lt;li&gt;Build&lt;/li&gt;
-&lt;/ol&gt;</code></pre></article>
-          <article class="tag-card" data-search="li list item"><span class="tag-name">&lt;li&gt;</span><p>Defines an item inside an ordered or unordered list.</p><pre><code>&lt;li&gt;List item&lt;/li&gt;</code></pre></article>
-          <article class="tag-card" data-search="dl description list"><span class="tag-name">&lt;dl&gt;</span><p>Contains a description list of terms and their descriptions.</p><pre><code>&lt;dl&gt;...&lt;/dl&gt;</code></pre></article>
-          <article class="tag-card" data-search="dt description term"><span class="tag-name">&lt;dt&gt;</span><p>Specifies a term or name in a description list.</p><pre><code>&lt;dt&gt;HTML&lt;/dt&gt;</code></pre></article>
-          <article class="tag-card" data-search="dd description details"><span class="tag-name">&lt;dd&gt;</span><p>Provides the description or value for a term in a description list.</p><pre><code>&lt;dd&gt;Markup language for web pages.&lt;/dd&gt;</code></pre></article>
-        </div></section>
-        <section class="content-card" id="media"><div class="section-head"><div><h2>07. Images & media</h2><p>Embed visual, audio, and video content.</p></div></div><div class="tag-grid">
-          <article class="tag-card" data-search="img image src alt"><span class="tag-name">&lt;img&gt;</span><p>Embeds an image. Always provide meaningful alt text when the image conveys information.</p><pre><code>&lt;img src="photo.jpg" alt="A mountain view"&gt;</code></pre></article>
-          <article class="tag-card" data-search="picture responsive image source"><span class="tag-name">&lt;picture&gt;</span><p>Offers multiple image sources so the browser can select the most suitable one.</p><pre><code>&lt;picture&gt;
+&lt;/ol&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="li list item">
+                <span class="tag-name">&lt;li&gt;</span>
+                <p>Defines an item inside an ordered or unordered list.</p>
+                <pre><code>&lt;li&gt;List item&lt;/li&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="dl description list">
+                <span class="tag-name">&lt;dl&gt;</span>
+                <p>
+                  Contains a description list of terms and their descriptions.
+                </p>
+                <pre><code>&lt;dl&gt;...&lt;/dl&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="dt description term">
+                <span class="tag-name">&lt;dt&gt;</span>
+                <p>Specifies a term or name in a description list.</p>
+                <pre><code>&lt;dt&gt;HTML&lt;/dt&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="dd description details">
+                <span class="tag-name">&lt;dd&gt;</span>
+                <p>
+                  Provides the description or value for a term in a description
+                  list.
+                </p>
+                <pre><code>&lt;dd&gt;Markup language for web pages.&lt;/dd&gt;</code></pre>
+              </article>
+            </div>
+          </section>
+          <section class="content-card" id="media">
+            <div class="section-head">
+              <div>
+                <h2>07. Images & media</h2>
+                <p>Embed visual, audio, and video content.</p>
+              </div>
+            </div>
+            <div class="tag-grid">
+              <article class="tag-card" data-search="img image src alt">
+                <span class="tag-name">&lt;img&gt;</span>
+                <p>
+                  Embeds an image. Always provide meaningful alt text when the
+                  image conveys information.
+                </p>
+                <pre><code>&lt;img src="photo.jpg" alt="A mountain view"&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="picture responsive image source"
+              >
+                <span class="tag-name">&lt;picture&gt;</span>
+                <p>
+                  Offers multiple image sources so the browser can select the
+                  most suitable one.
+                </p>
+                <pre><code>&lt;picture&gt;
   &lt;source media="(max-width:600px)" srcset="small.jpg"&gt;
   &lt;img src="large.jpg" alt="Landscape"&gt;
-&lt;/picture&gt;</code></pre></article>
-          <article class="tag-card" data-search="source media image audio video"><span class="tag-name">&lt;source&gt;</span><p>Specifies alternative media files for picture, audio, or video elements.</p><pre><code>&lt;source src="movie.mp4" type="video/mp4"&gt;</code></pre></article>
-          <article class="tag-card" data-search="audio sound controls"><span class="tag-name">&lt;audio&gt;</span><p>Embeds audio content, often with browser playback controls.</p><pre><code>&lt;audio controls src="audio.mp3"&gt;&lt;/audio&gt;</code></pre></article>
-          <article class="tag-card" data-search="video movie controls"><span class="tag-name">&lt;video&gt;</span><p>Embeds a video player in the page.</p><pre><code>&lt;video controls width="320"&gt;
+&lt;/picture&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="source media image audio video"
+              >
+                <span class="tag-name">&lt;source&gt;</span>
+                <p>
+                  Specifies alternative media files for picture, audio, or video
+                  elements.
+                </p>
+                <pre><code>&lt;source src="movie.mp4" type="video/mp4"&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="audio sound controls">
+                <span class="tag-name">&lt;audio&gt;</span>
+                <p>
+                  Embeds audio content, often with browser playback controls.
+                </p>
+                <pre><code>&lt;audio controls src="audio.mp3"&gt;&lt;/audio&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="video movie controls">
+                <span class="tag-name">&lt;video&gt;</span>
+                <p>Embeds a video player in the page.</p>
+                <pre><code>&lt;video controls width="320"&gt;
   &lt;source src="movie.mp4" type="video/mp4"&gt;
-&lt;/video&gt;</code></pre></article>
-          <article class="tag-card" data-search="track subtitles captions"><span class="tag-name">&lt;track&gt;</span><p>Adds timed text tracks such as subtitles or captions to audio and video.</p><pre><code>&lt;track kind="subtitles" src="captions.vtt" srclang="en" label="English"&gt;</code></pre></article>
-          <article class="tag-card" data-search="figure image illustration"><span class="tag-name">&lt;figure&gt;</span><p>Groups self-contained content such as an image, diagram, or code example.</p><pre><code>&lt;figure&gt;...&lt;/figure&gt;</code></pre></article>
-          <article class="tag-card" data-search="figcaption figure caption"><span class="tag-name">&lt;figcaption&gt;</span><p>Provides a caption for its parent figure.</p><pre><code>&lt;figcaption&gt;Mountain at sunrise&lt;/figcaption&gt;</code></pre></article>
-          <article class="tag-card" data-search="map image map clickable areas"><span class="tag-name">&lt;map&gt;</span><p>Defines an image map containing clickable areas.</p><pre><code>&lt;map name="workmap"&gt;...&lt;/map&gt;</code></pre></article>
-          <article class="tag-card" data-search="area image map hotspot"><span class="tag-name">&lt;area&gt;</span><p>Defines a clickable region inside an image map.</p><pre><code>&lt;area shape="rect" coords="0,0,80,80" href="page.html" alt="Area"&gt;</code></pre></article>
-          <article class="tag-card" data-search="iframe embed webpage"><span class="tag-name">&lt;iframe&gt;</span><p>Embeds another HTML page or external content inside the current page.</p><pre><code>&lt;iframe src="https://example.com" title="Example"&gt;&lt;/iframe&gt;</code></pre></article>
-          <article class="tag-card" data-search="embed external content"><span class="tag-name">&lt;embed&gt;</span><p>Embeds external content, such as a supported document or plugin resource.</p><pre><code>&lt;embed src="file.pdf" type="application/pdf"&gt;</code></pre></article>
-          <article class="tag-card" data-search="object external resource"><span class="tag-name">&lt;object&gt;</span><p>Represents an external resource, which may be an image, nested browsing context, or resource handled by a plugin.</p><pre><code>&lt;object data="file.pdf" type="application/pdf"&gt;&lt;/object&gt;</code></pre></article>
-          <article class="tag-card" data-search="canvas graphics javascript"><span class="tag-name">&lt;canvas&gt;</span><p>Provides a drawing area that JavaScript can use for graphics and animations.</p><pre><code>&lt;canvas id="chart" width="300" height="150"&gt;&lt;/canvas&gt;</code></pre></article>
-          <article class="tag-card" data-search="svg scalable vector graphics"><span class="tag-name">&lt;svg&gt;</span><p>Embeds scalable vector graphics, such as icons and diagrams.</p><pre><code>&lt;svg viewBox="0 0 100 100"&gt;
+&lt;/video&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="track subtitles captions">
+                <span class="tag-name">&lt;track&gt;</span>
+                <p>
+                  Adds timed text tracks such as subtitles or captions to audio
+                  and video.
+                </p>
+                <pre><code>&lt;track kind="subtitles" src="captions.vtt" srclang="en" label="English"&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="figure image illustration">
+                <span class="tag-name">&lt;figure&gt;</span>
+                <p>
+                  Groups self-contained content such as an image, diagram, or
+                  code example.
+                </p>
+                <pre><code>&lt;figure&gt;...&lt;/figure&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="figcaption figure caption">
+                <span class="tag-name">&lt;figcaption&gt;</span>
+                <p>Provides a caption for its parent figure.</p>
+                <pre><code>&lt;figcaption&gt;Mountain at sunrise&lt;/figcaption&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="map image map clickable areas"
+              >
+                <span class="tag-name">&lt;map&gt;</span>
+                <p>Defines an image map containing clickable areas.</p>
+                <pre><code>&lt;map name="workmap"&gt;...&lt;/map&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="area image map hotspot">
+                <span class="tag-name">&lt;area&gt;</span>
+                <p>Defines a clickable region inside an image map.</p>
+                <pre><code>&lt;area shape="rect" coords="0,0,80,80" href="page.html" alt="Area"&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="iframe embed webpage">
+                <span class="tag-name">&lt;iframe&gt;</span>
+                <p>
+                  Embeds another HTML page or external content inside the
+                  current page.
+                </p>
+                <pre><code>&lt;iframe src="https://example.com" title="Example"&gt;&lt;/iframe&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="embed external content">
+                <span class="tag-name">&lt;embed&gt;</span>
+                <p>
+                  Embeds external content, such as a supported document or
+                  plugin resource.
+                </p>
+                <pre><code>&lt;embed src="file.pdf" type="application/pdf"&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="object external resource">
+                <span class="tag-name">&lt;object&gt;</span>
+                <p>
+                  Represents an external resource, which may be an image, nested
+                  browsing context, or resource handled by a plugin.
+                </p>
+                <pre><code>&lt;object data="file.pdf" type="application/pdf"&gt;&lt;/object&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="canvas graphics javascript"
+              >
+                <span class="tag-name">&lt;canvas&gt;</span>
+                <p>
+                  Provides a drawing area that JavaScript can use for graphics
+                  and animations.
+                </p>
+                <pre><code>&lt;canvas id="chart" width="300" height="150"&gt;&lt;/canvas&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="svg scalable vector graphics"
+              >
+                <span class="tag-name">&lt;svg&gt;</span>
+                <p>
+                  Embeds scalable vector graphics, such as icons and diagrams.
+                </p>
+                <pre><code>&lt;svg viewBox="0 0 100 100"&gt;
   &lt;circle cx="50" cy="50" r="40" /&gt;
-&lt;/svg&gt;</code></pre></article>
-        </div></section>
-        <section class="content-card" id="tables"><div class="section-head"><div><h2>08. Tables</h2><p>Display structured data in rows and columns.</p></div></div><div class="tag-grid">
-          <article class="tag-card" data-search="table tabular data"><span class="tag-name">&lt;table&gt;</span><p>Creates a table for structured tabular data.</p><pre><code>&lt;table&gt;...&lt;/table&gt;</code></pre></article>
-          <article class="tag-card" data-search="caption table title"><span class="tag-name">&lt;caption&gt;</span><p>Provides a title or description for a table.</p><pre><code>&lt;caption&gt;Student marks&lt;/caption&gt;</code></pre></article>
-          <article class="tag-card" data-search="thead table header group"><span class="tag-name">&lt;thead&gt;</span><p>Groups the header rows of a table.</p><pre><code>&lt;thead&gt;...&lt;/thead&gt;</code></pre></article>
-          <article class="tag-card" data-search="tbody table body group"><span class="tag-name">&lt;tbody&gt;</span><p>Groups the main body rows of a table.</p><pre><code>&lt;tbody&gt;...&lt;/tbody&gt;</code></pre></article>
-          <article class="tag-card" data-search="tfoot table footer"><span class="tag-name">&lt;tfoot&gt;</span><p>Groups footer rows, often containing totals or summaries.</p><pre><code>&lt;tfoot&gt;...&lt;/tfoot&gt;</code></pre></article>
-          <article class="tag-card" data-search="tr table row"><span class="tag-name">&lt;tr&gt;</span><p>Defines a row in a table.</p><pre><code>&lt;tr&gt;...&lt;/tr&gt;</code></pre></article>
-          <article class="tag-card" data-search="th header cell"><span class="tag-name">&lt;th&gt;</span><p>Defines a header cell in a table.</p><pre><code>&lt;th scope="col"&gt;Name&lt;/th&gt;</code></pre></article>
-          <article class="tag-card" data-search="td data cell"><span class="tag-name">&lt;td&gt;</span><p>Defines a standard data cell in a table.</p><pre><code>&lt;td&gt;Aayan&lt;/td&gt;</code></pre></article>
-          <article class="tag-card" data-search="col column"><span class="tag-name">&lt;col&gt;</span><p>Specifies properties for one or more columns in a colgroup.</p><pre><code>&lt;col span="2"&gt;</code></pre></article>
-          <article class="tag-card" data-search="colgroup columns"><span class="tag-name">&lt;colgroup&gt;</span><p>Groups columns so shared properties can be applied.</p><pre><code>&lt;colgroup&gt;&lt;col span="2"&gt;&lt;/colgroup&gt;</code></pre></article>
-        </div></section>
-        <section class="content-card" id="forms"><div class="section-head"><div><h2>09. Forms & user input</h2><p>Collect information and create interactive controls.</p></div></div><div class="tag-grid">
-          <article class="tag-card" data-search="form input submission"><span class="tag-name">&lt;form&gt;</span><p>Groups controls used to submit user-provided information.</p><pre><code>&lt;form action="/submit" method="post"&gt;...&lt;/form&gt;</code></pre></article>
-          <article class="tag-card" data-search="input text checkbox radio password"><span class="tag-name">&lt;input&gt;</span><p>Creates an input control. Its type attribute determines the kind of data or control.</p><pre><code>&lt;input type="text" name="username"&gt;
-&lt;input type="checkbox"&gt;</code></pre></article>
-          <article class="tag-card" data-search="label form caption"><span class="tag-name">&lt;label&gt;</span><p>Provides a text label for a form control. Connect it using for and the control's id.</p><pre><code>&lt;label for="email"&gt;Email&lt;/label&gt;
-&lt;input id="email" type="email"&gt;</code></pre></article>
-          <article class="tag-card" data-search="textarea multiline text"><span class="tag-name">&lt;textarea&gt;</span><p>Creates a multi-line text input field.</p><pre><code>&lt;textarea rows="4" cols="30"&gt;&lt;/textarea&gt;</code></pre></article>
-          <article class="tag-card" data-search="button clickable"><span class="tag-name">&lt;button&gt;</span><p>Creates a clickable button.</p><pre><code>&lt;button type="submit"&gt;Send&lt;/button&gt;</code></pre></article>
-          <article class="tag-card" data-search="select dropdown option"><span class="tag-name">&lt;select&gt;</span><p>Creates a drop-down list of options.</p><pre><code>&lt;select name="city"&gt;...&lt;/select&gt;</code></pre></article>
-          <article class="tag-card" data-search="option dropdown choice"><span class="tag-name">&lt;option&gt;</span><p>Defines a choice inside a select, optgroup, or datalist.</p><pre><code>&lt;option value="karachi"&gt;Karachi&lt;/option&gt;</code></pre></article>
-          <article class="tag-card" data-search="optgroup option group"><span class="tag-name">&lt;optgroup&gt;</span><p>Groups related options inside a select menu.</p><pre><code>&lt;optgroup label="Cities"&gt;...&lt;/optgroup&gt;</code></pre></article>
-          <article class="tag-card" data-search="fieldset group form controls"><span class="tag-name">&lt;fieldset&gt;</span><p>Groups related form controls.</p><pre><code>&lt;fieldset&gt;...&lt;/fieldset&gt;</code></pre></article>
-          <article class="tag-card" data-search="legend fieldset title"><span class="tag-name">&lt;legend&gt;</span><p>Provides a caption for a fieldset.</p><pre><code>&lt;legend&gt;Personal details&lt;/legend&gt;</code></pre></article>
-          <article class="tag-card" data-search="datalist suggestions"><span class="tag-name">&lt;datalist&gt;</span><p>Provides suggested options for an input control.</p><pre><code>&lt;input list="browsers"&gt;
-&lt;datalist id="browsers"&gt;...&lt;/datalist&gt;</code></pre></article>
-          <article class="tag-card" data-search="output calculation result"><span class="tag-name">&lt;output&gt;</span><p>Displays the result of a calculation or user action.</p><pre><code>&lt;output name="result"&gt;42&lt;/output&gt;</code></pre></article>
-          <article class="tag-card" data-search="progress task completion"><span class="tag-name">&lt;progress&gt;</span><p>Shows the completion progress of a task.</p><pre><code>&lt;progress value="70" max="100"&gt;70%&lt;/progress&gt;</code></pre></article>
-          <article class="tag-card" data-search="meter gauge measurement"><span class="tag-name">&lt;meter&gt;</span><p>Displays a scalar measurement within a known range, such as disk usage.</p><pre><code>&lt;meter min="0" max="100" value="65"&gt;65%&lt;/meter&gt;</code></pre></article>
-        </div></section>
-        <section class="content-card" id="semantic"><div class="section-head"><div><h2>10. Semantic layout</h2><p>Describe the meaning and purpose of page regions.</p></div></div><div class="tag-grid">
-          <article class="tag-card" data-search="header introductory content"><span class="tag-name">&lt;header&gt;</span><p>Represents introductory content or a group of navigation links for a page or section.</p><pre><code>&lt;header&gt;Logo and heading&lt;/header&gt;</code></pre></article>
-          <article class="tag-card" data-search="main dominant content"><span class="tag-name">&lt;main&gt;</span><p>Contains the dominant content of the document. Normally use one main element per page.</p><pre><code>&lt;main&gt;Page content&lt;/main&gt;</code></pre></article>
-          <article class="tag-card" data-search="footer footer information"><span class="tag-name">&lt;footer&gt;</span><p>Represents footer information for a page or section, such as author or copyright details.</p><pre><code>&lt;footer&gt;© 2026 My Website&lt;/footer&gt;</code></pre></article>
-          <article class="tag-card" data-search="section thematic grouping"><span class="tag-name">&lt;section&gt;</span><p>Groups thematically related content, usually with a heading.</p><pre><code>&lt;section&gt;
+&lt;/svg&gt;</code></pre>
+              </article>
+            </div>
+          </section>
+          <section class="content-card" id="tables">
+            <div class="section-head">
+              <div>
+                <h2>08. Tables</h2>
+                <p>Display structured data in rows and columns.</p>
+              </div>
+            </div>
+            <div class="tag-grid">
+              <article class="tag-card" data-search="table tabular data">
+                <span class="tag-name">&lt;table&gt;</span>
+                <p>Creates a table for structured tabular data.</p>
+                <pre><code>&lt;table&gt;...&lt;/table&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="caption table title">
+                <span class="tag-name">&lt;caption&gt;</span>
+                <p>Provides a title or description for a table.</p>
+                <pre><code>&lt;caption&gt;Student marks&lt;/caption&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="thead table header group">
+                <span class="tag-name">&lt;thead&gt;</span>
+                <p>Groups the header rows of a table.</p>
+                <pre><code>&lt;thead&gt;...&lt;/thead&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="tbody table body group">
+                <span class="tag-name">&lt;tbody&gt;</span>
+                <p>Groups the main body rows of a table.</p>
+                <pre><code>&lt;tbody&gt;...&lt;/tbody&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="tfoot table footer">
+                <span class="tag-name">&lt;tfoot&gt;</span>
+                <p>Groups footer rows, often containing totals or summaries.</p>
+                <pre><code>&lt;tfoot&gt;...&lt;/tfoot&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="tr table row">
+                <span class="tag-name">&lt;tr&gt;</span>
+                <p>Defines a row in a table.</p>
+                <pre><code>&lt;tr&gt;...&lt;/tr&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="th header cell">
+                <span class="tag-name">&lt;th&gt;</span>
+                <p>Defines a header cell in a table.</p>
+                <pre><code>&lt;th scope="col"&gt;Name&lt;/th&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="td data cell">
+                <span class="tag-name">&lt;td&gt;</span>
+                <p>Defines a standard data cell in a table.</p>
+                <pre><code>&lt;td&gt;Aayan&lt;/td&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="col column">
+                <span class="tag-name">&lt;col&gt;</span>
+                <p>
+                  Specifies properties for one or more columns in a colgroup.
+                </p>
+                <pre><code>&lt;col span="2"&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="colgroup columns">
+                <span class="tag-name">&lt;colgroup&gt;</span>
+                <p>Groups columns so shared properties can be applied.</p>
+                <pre><code>&lt;colgroup&gt;&lt;col span="2"&gt;&lt;/colgroup&gt;</code></pre>
+              </article>
+            </div>
+          </section>
+          <section class="content-card" id="forms">
+            <div class="section-head">
+              <div>
+                <h2>09. Forms & user input</h2>
+                <p>Collect information and create interactive controls.</p>
+              </div>
+            </div>
+            <div class="tag-grid">
+              <article class="tag-card" data-search="form input submission">
+                <span class="tag-name">&lt;form&gt;</span>
+                <p>Groups controls used to submit user-provided information.</p>
+                <pre><code>&lt;form action="/submit" method="post"&gt;...&lt;/form&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="input text checkbox radio password"
+              >
+                <span class="tag-name">&lt;input&gt;</span>
+                <p>
+                  Creates an input control. Its type attribute determines the
+                  kind of data or control.
+                </p>
+                <pre><code>&lt;input type="text" name="username"&gt;
+&lt;input type="checkbox"&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="label form caption">
+                <span class="tag-name">&lt;label&gt;</span>
+                <p>
+                  Provides a text label for a form control. Connect it using for
+                  and the control's id.
+                </p>
+                <pre><code>&lt;label for="email"&gt;Email&lt;/label&gt;
+&lt;input id="email" type="email"&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="textarea multiline text">
+                <span class="tag-name">&lt;textarea&gt;</span>
+                <p>Creates a multi-line text input field.</p>
+                <pre><code>&lt;textarea rows="4" cols="30"&gt;&lt;/textarea&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="button clickable">
+                <span class="tag-name">&lt;button&gt;</span>
+                <p>Creates a clickable button.</p>
+                <pre><code>&lt;button type="submit"&gt;Send&lt;/button&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="select dropdown option">
+                <span class="tag-name">&lt;select&gt;</span>
+                <p>Creates a drop-down list of options.</p>
+                <pre><code>&lt;select name="city"&gt;...&lt;/select&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="option dropdown choice">
+                <span class="tag-name">&lt;option&gt;</span>
+                <p>Defines a choice inside a select, optgroup, or datalist.</p>
+                <pre><code>&lt;option value="karachi"&gt;Karachi&lt;/option&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="optgroup option group">
+                <span class="tag-name">&lt;optgroup&gt;</span>
+                <p>Groups related options inside a select menu.</p>
+                <pre><code>&lt;optgroup label="Cities"&gt;...&lt;/optgroup&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="fieldset group form controls"
+              >
+                <span class="tag-name">&lt;fieldset&gt;</span>
+                <p>Groups related form controls.</p>
+                <pre><code>&lt;fieldset&gt;...&lt;/fieldset&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="legend fieldset title">
+                <span class="tag-name">&lt;legend&gt;</span>
+                <p>Provides a caption for a fieldset.</p>
+                <pre><code>&lt;legend&gt;Personal details&lt;/legend&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="datalist suggestions">
+                <span class="tag-name">&lt;datalist&gt;</span>
+                <p>Provides suggested options for an input control.</p>
+                <pre><code>&lt;input list="browsers"&gt;
+&lt;datalist id="browsers"&gt;...&lt;/datalist&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="output calculation result">
+                <span class="tag-name">&lt;output&gt;</span>
+                <p>Displays the result of a calculation or user action.</p>
+                <pre><code>&lt;output name="result"&gt;42&lt;/output&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="progress task completion">
+                <span class="tag-name">&lt;progress&gt;</span>
+                <p>Shows the completion progress of a task.</p>
+                <pre><code>&lt;progress value="70" max="100"&gt;70%&lt;/progress&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="meter gauge measurement">
+                <span class="tag-name">&lt;meter&gt;</span>
+                <p>
+                  Displays a scalar measurement within a known range, such as
+                  disk usage.
+                </p>
+                <pre><code>&lt;meter min="0" max="100" value="65"&gt;65%&lt;/meter&gt;</code></pre>
+              </article>
+            </div>
+          </section>
+          <section class="content-card" id="semantic">
+            <div class="section-head">
+              <div>
+                <h2>10. Semantic layout</h2>
+                <p>Describe the meaning and purpose of page regions.</p>
+              </div>
+            </div>
+            <div class="tag-grid">
+              <article
+                class="tag-card"
+                data-search="header introductory content"
+              >
+                <span class="tag-name">&lt;header&gt;</span>
+                <p>
+                  Represents introductory content or a group of navigation links
+                  for a page or section.
+                </p>
+                <pre><code>&lt;header&gt;Logo and heading&lt;/header&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="main dominant content">
+                <span class="tag-name">&lt;main&gt;</span>
+                <p>
+                  Contains the dominant content of the document. Normally use
+                  one main element per page.
+                </p>
+                <pre><code>&lt;main&gt;Page content&lt;/main&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="footer footer information">
+                <span class="tag-name">&lt;footer&gt;</span>
+                <p>
+                  Represents footer information for a page or section, such as
+                  author or copyright details.
+                </p>
+                <pre><code>&lt;footer&gt;© 2026 My Website&lt;/footer&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="section thematic grouping">
+                <span class="tag-name">&lt;section&gt;</span>
+                <p>
+                  Groups thematically related content, usually with a heading.
+                </p>
+                <pre><code>&lt;section&gt;
   &lt;h2&gt;About us&lt;/h2&gt;
-&lt;/section&gt;</code></pre></article>
-          <article class="tag-card" data-search="article independent content"><span class="tag-name">&lt;article&gt;</span><p>Represents self-contained content that could stand independently, such as a blog post.</p><pre><code>&lt;article&gt;Blog post&lt;/article&gt;</code></pre></article>
-          <article class="tag-card" data-search="aside sidebar related content"><span class="tag-name">&lt;aside&gt;</span><p>Contains indirectly related content, such as a sidebar or note.</p><pre><code>&lt;aside&gt;Related links&lt;/aside&gt;</code></pre></article>
-          <article class="tag-card" data-search="address contact information"><span class="tag-name">&lt;address&gt;</span><p>Provides contact information for a person, organization, or article.</p><pre><code>&lt;address&gt;contact@example.com&lt;/address&gt;</code></pre></article>
-        </div></section>
-        <section class="content-card" id="interactive"><div class="section-head"><div><h2>11. Interactive elements</h2><p>Native HTML elements for disclosure and dialog interfaces.</p></div></div><div class="tag-grid">
-          <article class="tag-card" data-search="details disclosure"><span class="tag-name">&lt;details&gt;</span><p>Creates a disclosure widget that users can open and close.</p><pre><code>&lt;details&gt;...&lt;/details&gt;</code></pre></article>
-          <article class="tag-card" data-search="summary details label"><span class="tag-name">&lt;summary&gt;</span><p>Provides the visible label for a details disclosure widget.</p><pre><code>&lt;details&gt;
+&lt;/section&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="article independent content"
+              >
+                <span class="tag-name">&lt;article&gt;</span>
+                <p>
+                  Represents self-contained content that could stand
+                  independently, such as a blog post.
+                </p>
+                <pre><code>&lt;article&gt;Blog post&lt;/article&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="aside sidebar related content"
+              >
+                <span class="tag-name">&lt;aside&gt;</span>
+                <p>
+                  Contains indirectly related content, such as a sidebar or
+                  note.
+                </p>
+                <pre><code>&lt;aside&gt;Related links&lt;/aside&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="address contact information"
+              >
+                <span class="tag-name">&lt;address&gt;</span>
+                <p>
+                  Provides contact information for a person, organization, or
+                  article.
+                </p>
+                <pre><code>&lt;address&gt;contact@example.com&lt;/address&gt;</code></pre>
+              </article>
+            </div>
+          </section>
+          <section class="content-card" id="interactive">
+            <div class="section-head">
+              <div>
+                <h2>11. Interactive elements</h2>
+                <p>
+                  Native HTML elements for disclosure and dialog interfaces.
+                </p>
+              </div>
+            </div>
+            <div class="tag-grid">
+              <article class="tag-card" data-search="details disclosure">
+                <span class="tag-name">&lt;details&gt;</span>
+                <p>
+                  Creates a disclosure widget that users can open and close.
+                </p>
+                <pre><code>&lt;details&gt;...&lt;/details&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="summary details label">
+                <span class="tag-name">&lt;summary&gt;</span>
+                <p>
+                  Provides the visible label for a details disclosure widget.
+                </p>
+                <pre><code>&lt;details&gt;
   &lt;summary&gt;Read more&lt;/summary&gt;
   Extra information.
-&lt;/details&gt;</code></pre></article>
-          <article class="tag-card" data-search="dialog modal dialog"><span class="tag-name">&lt;dialog&gt;</span><p>Represents a dialog box or other interactive component, such as a modal.</p><pre><code>&lt;dialog open&gt;Hello!&lt;/dialog&gt;</code></pre></article>
-          <article class="tag-card" data-search="template reusable html"><span class="tag-name">&lt;template&gt;</span><p>Holds HTML that is not rendered immediately and can be cloned using JavaScript.</p><pre><code>&lt;template id="card"&gt;
+&lt;/details&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="dialog modal dialog">
+                <span class="tag-name">&lt;dialog&gt;</span>
+                <p>
+                  Represents a dialog box or other interactive component, such
+                  as a modal.
+                </p>
+                <pre><code>&lt;dialog open&gt;Hello!&lt;/dialog&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="template reusable html">
+                <span class="tag-name">&lt;template&gt;</span>
+                <p>
+                  Holds HTML that is not rendered immediately and can be cloned
+                  using JavaScript.
+                </p>
+                <pre><code>&lt;template id="card"&gt;
   &lt;article&gt;...&lt;/article&gt;
-&lt;/template&gt;</code></pre></article>
-          <article class="tag-card" data-search="slot web components"><span class="tag-name">&lt;slot&gt;</span><p>Defines a placeholder inside a web component's shadow tree.</p><pre><code>&lt;slot name="title"&gt;&lt;/slot&gt;</code></pre></article>
-        </div></section>
-        <section class="content-card" id="other"><div class="section-head"><div><h2>12. Other useful elements</h2><p>Additional elements for language, annotations, and embedded content.</p></div></div><div class="tag-grid">
-          <article class="tag-card" data-search="div generic block container"><span class="tag-name">&lt;div&gt;</span><p>A generic block-level container used for grouping and styling content when no semantic element fits.</p><pre><code>&lt;div class="container"&gt;Content&lt;/div&gt;</code></pre></article>
-          <article class="tag-card" data-search="data machine readable value"><span class="tag-name">&lt;data&gt;</span><p>Associates visible content with a machine-readable value.</p><pre><code>&lt;data value="42"&gt;Forty-two&lt;/data&gt;</code></pre></article>
-          <article class="tag-card" data-search="ruby pronunciation annotation"><span class="tag-name">&lt;ruby&gt;</span><p>Groups ruby annotations used to show pronunciation or other annotation text.</p><pre><code>&lt;ruby&gt;漢&lt;rt&gt;kan&lt;/rt&gt;&lt;/ruby&gt;</code></pre></article>
-          <article class="tag-card" data-search="noscript fallback scripting"><span class="tag-name">&lt;noscript&gt;</span><p>Defines fallback content for users whose browser does not support or has disabled scripting.</p><pre><code>&lt;noscript&gt;JavaScript is disabled.&lt;/noscript&gt;</code></pre></article>
-        </div><div class="note"><strong>Study tip:</strong> Learn the purpose of an element, not just its appearance. For example, use <code>&lt;strong&gt;</code> for importance, not merely to make text bold; use <code>&lt;nav&gt;</code> for navigation and <code>&lt;main&gt;</code> for the page's main content.</div></section>
-      </div>
-      <div class="empty" id="empty">No matching elements found. Try another search term.</div>
-    </main>
-  </div>
-  <footer class="footer">Static HTML + CSS study reference · Made for Web Engineering · Practice by writing the markup yourself.</footer>
-
-</body>
+&lt;/template&gt;</code></pre>
+              </article>
+              <article class="tag-card" data-search="slot web components">
+                <span class="tag-name">&lt;slot&gt;</span>
+                <p>
+                  Defines a placeholder inside a web component's shadow tree.
+                </p>
+                <pre><code>&lt;slot name="title"&gt;&lt;/slot&gt;</code></pre>
+              </article>
+            </div>
+          </section>
+          <section class="content-card" id="other">
+            <div class="section-head">
+              <div>
+                <h2>12. Other useful elements</h2>
+                <p>
+                  Additional elements for language, annotations, and embedded
+                  content.
+                </p>
+              </div>
+            </div>
+            <div class="tag-grid">
+              <article
+                class="tag-card"
+                data-search="div generic block container"
+              >
+                <span class="tag-name">&lt;div&gt;</span>
+                <p>
+                  A generic block-level container used for grouping and styling
+                  content when no semantic element fits.
+                </p>
+                <pre><code>&lt;div class="container"&gt;Content&lt;/div&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="data machine readable value"
+              >
+                <span class="tag-name">&lt;data&gt;</span>
+                <p>Associates visible content with a machine-readable value.</p>
+                <pre><code>&lt;data value="42"&gt;Forty-two&lt;/data&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="ruby pronunciation annotation"
+              >
+                <span class="tag-name">&lt;ruby&gt;</span>
+                <p>
+                  Groups ruby annotations used to show pronunciation or other
+                  annotation text.
+                </p>
+                <pre><code>&lt;ruby&gt;漢&lt;rt&gt;kan&lt;/rt&gt;&lt;/ruby&gt;</code></pre>
+              </article>
+              <article
+                class="tag-card"
+                data-search="noscript fallback scripting"
+              >
+                <span class="tag-name">&lt;noscript&gt;</span>
+                <p>
+                  Defines fallback content for users whose browser does not
+                  support or has disabled scripting.
+                </p>
+                <pre><code>&lt;noscript&gt;JavaScript is disabled.&lt;/noscript&gt;</code></pre>
+              </article>
+            </div>
+            <div class="note">
+              <strong>Study tip:</strong> Learn the purpose of an element, not
+              just its appearance. For example, use
+              <code>&lt;strong&gt;</code> for importance, not merely to make
+              text bold; use <code>&lt;nav&gt;</code> for navigation and
+              <code>&lt;main&gt;</code> for the page's main content.
+            </div>
+          </section>
+        </div>
+</main>
+    </div>
+    <footer class="footer">
+      Static HTML + CSS study reference · Made for Web Engineering · Practice by
+      writing the markup yourself.
+    </footer>
+    <script src="script.js" defer></script>
+  </body>
 </html>
